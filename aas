@@ -1,1 +1,39 @@
-aaaaa
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head></h:head>
+<body>
+
+<h:form>
+	<h:outputLabel value="Usuario "  />
+	<h:inputText value= ""  />
+	<p></p>
+	<h:outputLabel value="Nombre " />
+	<h:inputText value=""  />
+	<p></p>
+	<h:outputLabel value="Apellido" />
+	<h:inputText value="" />
+	<p></p>
+	<h:outputLabel value="Celular  " />
+	<h:inputText value="+51" maxlength="12"  />
+	<p></p>
+	<h:outputLabel value="Email           " />
+	<h:inputText value=""  />
+	<p></p>
+	<h:outputLabel value="Contraseña" />
+	<h:inputText value=""  />
+	<p></p>
+	<h:outputLabel value="Seleccione su tipo de cuenta:" />
+	<h:selectOneRadio>
+		<f:selectItem itemValue="1" itemLabel="Proveedor" />
+		<f:selectItem itemValue="2" itemLabel="Comprador" />
+	</h:selectOneRadio>
+	<p>	</p>	
+	<h:button value="Registrar"></h:button>
+</h:form>
+</body>
+</html>
