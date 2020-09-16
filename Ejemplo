@@ -1,0 +1,22 @@
+<body>
+<h:form>
+	<h:outputLabel value="Nombre" />
+	<h:inputText value=""  />
+	<h:outputLabel value="Apellido" />
+	<h:inputText value=""  />
+	<h:outputLabel value="Seleccione Ciudad" />
+	<h:selectOneListbox >
+		<f:selectItem itemValue="1" itemLabel="Lima" />
+		<f:selectItem itemValue="2" itemLabel="Callao" />
+		<f:selectItem itemValue="3" itemLabel="Arequipa" />
+	</h:selectOneListbox>
+	<h:outputLabel value="Seleccione Estado Civil" />
+	<h:selectOneRadio >
+		<f:selectItem itemValue="1" itemLabel="Soltero" />
+		<f:selectItem itemValue="2" itemLabel="Casado" />
+		<f:selectItem itemValue="3" itemLabel="Viudo" />
+		<f:selectItem itemValue="4" itemLabel="Divorciado" />
+	</h:selectOneRadio>
+	<h:button value="Enviar"></h:button>
+</h:form>
+</body>
