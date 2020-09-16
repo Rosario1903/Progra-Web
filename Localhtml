@@ -41,9 +41,16 @@
 			<p:inputText autocomplete="off" id="numero" styleClass="form-control"
 			value="#{LocalController.l.numerodeproductosLocal}" maxlength="30" required="true"/>
 			
+			
+			<p:commandButton value="Grabar"
+				actionListener="#{LocalController.l.insert()}"
+				styleClass="btn btn-danger" update="@form"/>
+			
+			
 		</h:form>
 		
 		</ui:define>
+		<ui:define name="footerCont"> </ui:define>
 
 </ui:composition>
 
