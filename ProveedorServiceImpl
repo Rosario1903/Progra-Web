@@ -1,0 +1,33 @@
+package serviceimpl;
+import java.io.Serializable;
+import java.util.List;
+
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import entity.Proveedor;
+import daointerface.IProveedorDao;
+import serviceinterface.IProveedorService;
+@Named
+@RequestScoped
+public class ProveedorServiceImpl  implements IProveedorService, Serializable {
+
+	private static final long serialVersionUID = 1L;
+	@Inject
+	private IProveedorDao lP;
+	@Override
+	public void insert(Proveedor pro) {
+		lP.insert(pro);
+		
+	}
+
+	@Override
+	public List<Proveedor> list() {
+		
+		return lP.list();
+	}
+
+
+
+}
