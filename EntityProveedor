@@ -1,0 +1,46 @@
+package entity;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity 
+@Table(name="Proveedor")
+public class Proveedor {
+	@Id 
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private int idProveedor;
+	@ManyToOne
+	@JoinColumn(name = "idUsuario", nullable =false )
+	private Usuario usuario;
+	@Column(name="RUC",nullable=false,length=35)	
+	private String RUC;
+	public Proveedor() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Proveedor(Usuario usuario, String rUC) {
+		super();
+		this.usuario = usuario;
+		RUC = rUC;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	public String getRUC() {
+		return RUC;
+	}
+	public void setRUC(String rUC) {
+		RUC = rUC;
+	}	
+
+	
+
+}
