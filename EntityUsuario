@@ -1,0 +1,122 @@
+package entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity 
+@Table(name="Usuario")
+public class Usuario {
+
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int idUsuario;
+	@Column(name="nameCliente",nullable=false,length=35)	
+	private String nameCliente;	
+	@Column(name="nameProveedor",nullable=false,length=35)	
+	private String nameProveedor;
+	@Column(name="lastnameUsuario",nullable=false,length=65)	
+	private String lastnameUsuario;
+	@Column(name="phoneusuario",nullable=false,length=35)	
+	private String phoneUsuario;	
+	@Column(name="emailUsuario",nullable=false,length=35)	
+	private String emailUsuario	;
+	@Column(name="passwordUsuario",nullable=false,length=35)	
+	private String passwordUsuario;
+	
+	
+	public Usuario() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Usuario(int idUsuario, String nameCliente, String nameProveedor, String lastnameUsuario, String phoneUsuario,
+			String emailUsuario, String passwordUsuario) {
+		super();
+		this.idUsuario = idUsuario;
+		this.nameCliente = nameCliente;
+		this.nameProveedor = nameProveedor;
+		this.lastnameUsuario = lastnameUsuario;
+		this.phoneUsuario = phoneUsuario;
+		this.emailUsuario = emailUsuario;
+		this.passwordUsuario = passwordUsuario;
+	}
+
+
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+
+	public String getNameCliente() {
+		return nameCliente;
+	}
+
+
+	public void setNameCliente(String nameCliente) {
+		this.nameCliente = nameCliente;
+	}
+
+
+	public String getNameProveedor() {
+		return nameProveedor;
+	}
+
+
+	public void setNameProveedor(String nameProveedor) {
+		this.nameProveedor = nameProveedor;
+	}
+
+
+	public String getLastnameUsuario() {
+		return lastnameUsuario;
+	}
+
+
+	public void setLastnameUsuario(String lastnameUsuario) {
+		this.lastnameUsuario = lastnameUsuario;
+	}
+
+
+	public String getPhoneUsuario() {
+		return phoneUsuario;
+	}
+
+
+	public void setPhoneUsuario(String phoneUsuario) {
+		this.phoneUsuario = phoneUsuario;
+	}
+
+
+	public String getEmailUsuario() {
+		return emailUsuario;
+	}
+
+
+	public void setEmailUsuario(String emailUsuario) {
+		this.emailUsuario = emailUsuario;
+	}
+
+
+	public String getPasswordUsuario() {
+		return passwordUsuario;
+	}
+
+
+	public void setPasswordUsuario(String passwordUsuario) {
+		this.passwordUsuario = passwordUsuario;
+	}
+
+
+	
+	
+}
