@@ -1,0 +1,81 @@
+package daoimpl;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
+import entity.Local;
+import daointerface.ILocalDao;
+public class LocalDaoImpl implements ILocalDao {
+	@PersistenceContext(unitName = "TrabajoParcial")
+	private EntityManager em;
+
+	@Transactional
+	@Override
+	public void insert(Local loc) {
+		try {
+			em.persist(loc);
+		} catch (Exception e) {
+			System.out.println("Error al insertar local");
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Local> list() {
+		
+		List<Local> listalo = new ArrayList<Local>();
+		try {
+			Query q = em.createQuery("from Local l");
+			listalo = (List<Local>) q.getResultList();
+		} catch (Exception e) {
+			System.out.println("Error al listar local");
+		}
+		return listalo;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Local> findByNameLocal(Local loc) {
+		
+		List<Local> lista = new ArrayList<Local>();
+		try {
+			Query q = em.createQuery("from Local l where l.nombreloLocal like ?1 or l.proveedor.usuario like ?1");
+			q.setParameter(1, "%" + loc.getNombreloLocal() +  "%");
+			lista = (List<Local>) q.getResultList();
+		} catch (Exception e) {
+			System.out.println("Error al listar Local");
+		}
+		return lista;
+	}
+
+	@Transactional
+	@Override
+	public void update(Local loc) {
+		
+		try {
+			em.merge(loc);
+		} catch (Exception e) {
+			System.out.println("Error al actualizar local");
+		}
+	}
+
+	@Transactional
+	@Override
+	public void delete(int idLocal) {
+		Local l= new Local();
+		try {
+			
+			l=em.getReference(Local.class,idLocal);
+			em.remove(l);			
+			
+		} catch (Exception e) {
+			
+			System.out.println("Error al eliminar local");
+		}
+		
+	}
+
+}
