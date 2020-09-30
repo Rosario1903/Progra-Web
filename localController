@@ -1,0 +1,120 @@
+package Controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import entity.Proveedor;
+import entity.Local;
+import serviceinterface.ILocalService;
+import serviceinterface.IProveedorService;
+
+@Named
+@RequestScoped
+public class LocalController {
+	@Inject
+	private ILocalService lS;
+	@Inject
+	private IProveedorService pS;
+
+	private Local local;
+	private Proveedor proveedor;
+
+	List<Proveedor> listproveedores;
+	List<Local> listlocal;
+
+	@PostConstruct
+	public void init() {
+		this.proveedor = new Proveedor();
+		this.local = new Local();
+		this.listlocal = new ArrayList<Local>();
+		this.listproveedores = new ArrayList<Proveedor>();
+      	this.list();
+		this.listLocales();
+	}
+	public String newLocal() {
+		this.setLocal(new Local());;
+		listlocal = lS.list();
+		return "Local.xhtml";
+	}
+	public void insert() {
+		try {
+
+			lS.insert(local);
+			this.cleanLocal();
+			this.list();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	public void cleanLocal() {
+		this.init();
+	}
+	private void listLocales() {
+		try {
+			listproveedores = pS.list();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	public void findByName() {
+		try {
+			if (local.getNombreloLocal().isEmpty()) {
+				listlocal = this.lS.list();
+			} else {
+
+				listlocal = this.lS.findByNameLocal(this.getLocal());
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+
+	private void list() {
+		try {
+			listlocal = lS.list();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public Local getLocal() {
+		return local;
+	}
+
+	public void setLocal(Local local) {
+		this.local = local;
+	}
+
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
+
+	public List<Proveedor> getListproveedores() {
+		return listproveedores;
+	}
+
+	public void setListproveedores(List<Proveedor> listproveedores) {
+		this.listproveedores = listproveedores;
+	}
+
+	public List<Local> getListlocal() {
+		return listlocal;
+	}
+
+	public void setListlocal(List<Local> listlocal) {
+		this.listlocal = listlocal;
+	}
+
+}
