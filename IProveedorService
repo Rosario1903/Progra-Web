@@ -1,0 +1,10 @@
+package serviceinterface;
+import java.util.List;
+import entity.Proveedor;
+
+
+public interface IProveedorService {
+	public void insert(Proveedor pro);
+
+	public List<Proveedor> list();
+}
