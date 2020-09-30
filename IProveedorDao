@@ -1,0 +1,10 @@
+package daointerface;
+import java.util.List;
+import entity.Proveedor;
+
+public interface IProveedorDao {
+	public void insert(Proveedor pro);
+
+	public List<Proveedor> list();
+	
+}
