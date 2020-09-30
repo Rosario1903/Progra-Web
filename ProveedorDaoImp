@@ -1,0 +1,45 @@
+package daoimpl;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
+
+import entity.Proveedor;
+import daointerface.IProveedorDao;
+public class ProveedorDaoImpl implements Serializable, IProveedorDao{
+
+	private static final long serialVersionUID = 1L;
+	@PersistenceContext(unitName = "TrabajoParcial")
+	private EntityManager em;
+	
+	@Transactional
+	public void insert(Proveedor pro) {
+		try {
+			em.persist(pro);
+
+			
+		} catch (Exception e) {
+			System.out.println("Error al insertar ");
+		}
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Proveedor> list() {
+		
+		List<Proveedor> listapro = new ArrayList<Proveedor>();
+		try {
+			Query q = em.createQuery("from Proveedor p");
+			listapro = (List<Proveedor>) q.getResultList();
+		} catch (Exception e) {
+			System.out.println("Error al listar");
+		}
+		return listapro;
+	}
+	
+
+}
