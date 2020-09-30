@@ -1,0 +1,14 @@
+package serviceinterface;
+import java.util.List;
+import entity.Local;
+
+public interface ILocalService {
+	public void insert(Local loc);
+
+	public List<Local> list();
+
+	public List<Local> findByNameLocal(Local loc);
+
+	public void update(Local loc);
+	public void delete(int idLocal);
+}
