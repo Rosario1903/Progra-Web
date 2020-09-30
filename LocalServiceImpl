@@ -1,0 +1,50 @@
+package serviceimpl;
+import java.util.List;
+
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import entity.Local;
+import daointerface.ILocalDao;
+import serviceinterface.ILocalService;
+@Named
+@RequestScoped
+public class LocalServiceImpl implements ILocalService{
+	
+	@Inject
+	private  ILocalDao lD;
+	
+	@Override
+	public void insert(Local loc) {
+		lD.insert(loc);
+		
+	}
+
+	@Override
+	public List<Local> list() {
+		
+		return lD.list();
+	}
+
+	@Override
+	public List<Local> findByNameLocal(Local loc) {
+		
+		return lD.findByNameLocal(loc);
+	}
+
+	@Override
+	public void update(Local loc) {
+	
+		lD.update(loc);
+	}
+
+	@Override
+	public void delete(int idLocal) {
+		lD.delete(idLocal);
+		
+	}
+	
+	
+
+}
