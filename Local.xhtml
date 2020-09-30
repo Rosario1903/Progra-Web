@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Local:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Local</span>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+
+
+			<h:outputLabel for="idLocal" value="Código"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idLocal"
+				styleClass="form-control" value="#{LocalController.local.idLocal}"
+				required="true" />
+			<h:outputLabel for="cboLocal" value="Local" styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="local" styleClass="form-control"
+				value="#{LocalController.local.nombreLocal}" maxlength="30"
+				required="true" />
+			<h:outputLabel for="adress" value="Direccion" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="price" styleClass="form-control"
+				value="#{LocalController.local.adressLocal}" required="true" />
+			<p:outputLabel for="cboLocal" value="Local" />
+			
+			<p:inputText autocomplete="off" id="numer" styleClass="form-control"
+				value="#{LocalController.local.numberdeproductosLocal}" required="true" />
+			<p:outputLabel for="cboLocal" value="Local" />
+			
+			<p:selectOneMenu id="cboLocal"
+				value="#{LocalController.local.proveedor}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{LocalController.listproveedores}" var="a"
+					itemLabel="#{a.RUC}" itemValue="#{a}" />
+			</p:selectOneMenu>
+			<br />
+
+			<p:commandButton value="Grabar"
+				actionListener="#{LocalController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listLocal?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listLocal?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
