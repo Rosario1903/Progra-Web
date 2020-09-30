@@ -1,0 +1,77 @@
+package entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+
+
+@Entity 
+@Table(name="Local")
+public class Local {
+	@Id 
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private int idLocal;
+	@Column(name="nameLocal",nullable=false,length=35)	
+	private String nombreLocal;	
+	@Column(name="adressLocal",nullable=false,length=65)	
+	private String adressLocal;
+	@Column(name="numberdeproductosLocal",nullable=false,length=35)	
+	private int numberdeproductosLocal;
+	@ManyToOne
+	@JoinColumn(name = "idProveedor", nullable =false )
+	private Proveedor proveedor;
+	public Local() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Local(int idLocal, String nombreloLocal, String adressLocal, int numberdeproductosLocal,
+			Proveedor proveedor) {
+		super();
+		this.idLocal = idLocal;
+		this.nombreLocal = nombreloLocal;
+		this.adressLocal = adressLocal;
+		this.numberdeproductosLocal = numberdeproductosLocal;
+		this.proveedor = proveedor;
+	}
+
+	public int getIdLocal() {
+		return idLocal;
+	}
+	public void setIdLocal(int idLocal) {
+		this.idLocal = idLocal;
+	}
+	public String getNombreloLocal() {
+		return nombreLocal;
+	}
+	public void setNombreloLocal(String nombreloLocal) {
+		this.nombreLocal = nombreloLocal;
+	}
+	
+	public String getAdressLocal() {
+		return adressLocal;
+	}
+	public void setAdressLocal(String adressLocal) {
+		this.adressLocal = adressLocal;
+	}
+	
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
+	public int getNumberdeproductosLocal() {
+		return numberdeproductosLocal;
+	}
+	public void setNumberdeproductosLocal(int numberdeproductosLocal) {
+		this.numberdeproductosLocal = numberdeproductosLocal;
+	}
+	
+}
